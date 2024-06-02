@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:atas_mobile/clipper.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -6,86 +7,104 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-// create a sign up page
-      // use the background color of the home page
-      // use the same padding as the home page
-      // create a column with a top padding of 86
-      // add the Smartr logo
-      // add a SizedBox with a height of 19.776073455810547
-      // add the sign up image
-      // add a SizedBox with a height of 19.776073455810547
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromRGBO(18, 170, 115, 1),
-              Color.fromRGBO(19, 91, 70, 0.81),
-            ],
-          ),
-        ),
-        padding: const EdgeInsets.only(top: 86),
+        color: const Color.fromRGBO(191, 219, 209, 1.0),
         child: Center(
           child: Column(
             children: [
-              Column(
-                //add a top padding of 86
-                children: [
-                  Container(
-                    child: Image.asset(
-                      "assets/smartr.png",
-                      width: 97.62547302246094,
-                      height: 19.776073455810547,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 19.776073455810547,
-                  ),
-                  Container(
-                    child: Image.asset(
-                      "assets/signupman.png",
-                      width: 200,
-                      height: 211,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 19.776073455810547,
-                  ),
-                  const Text(
-                    "Welcome to Smartr",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Sign up",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
+              Container(
+                child: Column(
+                  children: [
+                    Opacity(
+                      opacity: 1,
+                      child: ClipPath(
+                        clipper: Ellipse(),
+                        child: Container(
+                          width: 375,
+                          color: const Color.fromRGBO(18, 170, 115, 1),
+                          height: 212,
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                                top: 70, left: 375 / 2 - 50),
+                            child: const Text(
+                              "AtasR",
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                         ),
-                        SizedBox(
-                          height: 19.776073455810547,
-                        ),
-                        // add the sign up form
-                        // add a SizedBox with a height of 19.776073455810547
-                        // add the sign up button
-                        // add a SizedBox with a height of 19.776073455810547
-                        // add the sign in button
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              const SizedBox(height: 19.776),
+              const Text(
+                "Let’s get you started",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Color(0xFF434545),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const Text("First name",
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF434847),
+                  )),
+              Container(
+                  width: 274,
+                  height: 42,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white)),
+              const Text("First name",
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF434847),
+                  )),
+              Container(
+                  width: 274,
+                  height: 42,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white)),
+              const Text("First name",
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF434847),
+                  )),
+              Container(
+                  width: 274,
+                  height: 42,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white)),
+              const Text("First name",
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF434847),
+                  )),
+              Container(
+                  width: 274,
+                  height: 42,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white)),
+              const Text(
+                  "By signing up, you will declare that you read and understand the Smartr Services Agreement.",
+                  style: TextStyle(
+                    fontSize: 8,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF434847),
+                  )),
             ],
           ),
         ),
