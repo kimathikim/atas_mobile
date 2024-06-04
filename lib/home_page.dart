@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
             children: [
               // Add a test logo
               const Text(
-                "AtasR",
+                "AterasR",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
