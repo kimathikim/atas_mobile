@@ -89,22 +89,20 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset('assets/switch.svg'),
-                        const SizedBox(width: 5),
-                        const Text(
-                          "Your Career move is just a tap away.      ",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset('assets/switch.svg'),
+                      const SizedBox(width: 5),
+                      const Text(
+                        "Your Career move is just a tap away.      ",
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 15),
                 ],

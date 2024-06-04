@@ -1,4 +1,4 @@
-import 'package:atas_mobile/sign_up.dart';
+import 'package:atas_mobile/archive.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
@@ -13,7 +13,7 @@ class Button extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const SignUp(),
+            builder: (context) => const Jobs(),
           ),
         );
       },
@@ -25,7 +25,7 @@ class Button extends StatelessWidget {
       ),
       child: Ink(
         decoration: BoxDecoration(
-          color: const Color(0xffbfdbd1),
+          color: const Color.fromRGBO(19, 91, 70, 0.91),
           borderRadius: BorderRadius.circular(40),
         ),
         child: Container(
@@ -37,7 +37,7 @@ class Button extends StatelessWidget {
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w700,
-              color: Color.fromRGBO(19, 91, 70, 0.91),
+              color: Color(0xffbfdbd1),
             ),
           ),
         ),
