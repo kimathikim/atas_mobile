@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""This claass defines the database storage engine for the immunization tracking system"""
+"""This claass defines the database storage engine for the
+immunization tracking system"""
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
@@ -9,15 +10,20 @@ classes = {}
 
 
 class DBstorage:
+    """Initialize with the MySQL database"""
+
     def __init__(self):
         """Initialize the data storage class"""
-        AM_USER = "black"
+        AM_USER = getenv("AM_USER")
         AM_PWD = getenv("AM_PWD")
-        AM_HOST = "vandi.mysql.database.azure.com"
+        AM_HOST = getenv("AM_HOST")
         AM_DB = getenv("AM_DB")
-        AM_SSL_CA = getenv("AM_SSL_CA")
-        DATABASE_URL = f"mysql+mysqlconnector://{AM_USER}:{AM_PWD}@{AM_HOST}/{AM_DB}?ssl_ca={AM_SSL_CA}"
-        self.__engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+        self.__engine = create_engine(
+            "mysql+mysqldb://{}:{}@{}/{}".format(
+                AM_USER, AM_PWD, AM_HOST, AM_DB
+            ),
+            pool_pre_ping=True,
+        )
 
     def all(self, cls=None):
         """query on the current database session"""
