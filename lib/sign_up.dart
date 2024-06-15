@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:atas_mobile/clipper.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:atas_mobile/button2.dart';
+import 'package:atas_mobile/form_fields.dart';
 
 class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+  SignUp({super.key});
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,6 @@ class SignUp extends StatelessWidget {
                       child: ClipPath(
                         clipper: Ellipse(),
                         child: Container(
-                          // width of the screen
                           width: w,
                           color: const Color.fromRGBO(18, 170, 115, 1),
                           height: 212,
@@ -56,140 +60,55 @@ class SignUp extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.only(top: 10, bottom: 3),
-                // allign left
-                margin: const EdgeInsets.only(right: 200),
-                child: const Text(
-                  "First name",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF434847),
-                  ),
-                ),
-              ),
-              Container(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  width: 274,
-                  height: 42,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.4),
-                          spreadRadius: 5,
-                          offset: const Offset(0.0, 5.0),
-                          blurRadius: 6.0,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          labelText: 'First name',
+                          controller: _firstNameController,
+                        ),
+                        CustomTextField(
+                          labelText: 'Last name',
+                          controller: _lastNameController,
+                        ),
+                        CustomTextField(
+                          labelText: 'Email',
+                          controller: _emailController,
+                        ),
+                        CustomTextField(
+                          labelText: 'Password',
+                          controller: _passwordController,
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {}
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStateProperty.all<Color>(
+                                const Color.fromRGBO(19, 91, 70, 0.91)),
+                          ),
+                          child: Container(
+                            width: 234,
+                            height: 42,
+                            alignment: Alignment.center,
+                            child: const Text(
+                              'SIGN UP',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white)),
-              Container(
-                padding: const EdgeInsets.only(top: 10, bottom: 3),
-                // allign left
-                margin: const EdgeInsets.only(right: 200),
-                child: const Text(
-                  "Last name",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF434847),
-                  ),
-                ),
-              ),
-              Container(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  width: 274,
-                  height: 42,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.4),
-                          spreadRadius: 5,
-                          offset: const Offset(0.0, 5.0),
-                          blurRadius: 6.0,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white)),
-              Container(
-                padding: const EdgeInsets.only(top: 10, bottom: 3),
-                // allign left
-                margin: const EdgeInsets.only(right: 200),
-                child: const Text(
-                  "Email",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF434847),
-                  ),
-                ),
-              ),
-              Container(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  width: 274,
-                  height: 42,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.4),
-                          spreadRadius: 5,
-                          offset: const Offset(0.0, 5.0),
-                          blurRadius: 6.0,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white)),
-              Container(
-                padding: const EdgeInsets.only(top: 10, bottom: 3),
-                // allign left
-                margin: const EdgeInsets.only(right: 200),
-                child: const Text(
-                  "Password",
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF434847),
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(bottom: 10),
-                width: 274,
-                height: 42,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.4),
-                        spreadRadius: 5,
-                        offset: const Offset(0.0, 5.0),
-                        blurRadius: 6.0,
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white),
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 70, top: 5),
-                child: Row(
-                  children: [
-                    SvgPicture.asset('assets/switch.svg'),
-                    const SizedBox(width: 1),
-                    const Text(
-                      "By signing up, you will declare that you read\n"
-                      "and understand the Smartr Services Agreement.",
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF434847),
-                      ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 10),
-                child: const Button(),
               ),
             ],
           ),
