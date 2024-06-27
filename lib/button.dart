@@ -1,5 +1,5 @@
-import 'package:atas_mobile/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:atas_mobile/signin.dart';
 
 class Button extends StatelessWidget {
   const Button({
@@ -13,7 +13,7 @@ class Button extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SignUp(),
+            builder: (context) => const LoginApp(),
           ),
         );
       },

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:atas_mobile/sign_up.dart';
 import 'package:atas_mobile/clipper.dart';
 import 'package:atas_mobile/form_fields.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
@@ -10,6 +13,36 @@ class SignUp extends StatelessWidget {
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  Future<void> _createUser(
+      String email, String password, String firstName, String lastName) async {
+    final url = Uri.parse('http://10.0.2.2:5000/api/v1/users');
+    final headers = {
+      'Content-Type': 'application/json',
+      'accept': 'application/json',
+    };
+    final body = jsonEncode({
+      'email': email,
+      'password': password,
+      'first_name': firstName,
+      'last_name': lastName,
+    });
+
+    try {
+      final response = await http.post(url, headers: headers, body: body);
+      if (response.statusCode == 201) {
+        print('User created successfully');
+        // Handle successful response
+      } else {
+        print('Failed to create user: ${response.statusCode}');
+        // Handle error response
+        //
+      }
+    } catch (e) {
+      print('Error: $e');
+      // Handle network or other errors
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +118,15 @@ class SignUp extends StatelessWidget {
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {}
+                            if (_formKey.currentState!.validate()) {
+                              // Assuming you have TextEditingController instances for each field
+                              final email = _emailController.text;
+                              final password = _passwordController.text;
+                              final firstName = _firstNameController.text;
+                              final lastName = _lastNameController.text;
+
+                              _createUser(email, password, firstName, lastName);
+                            }
                           },
                           style: ButtonStyle(
                             backgroundColor: WidgetStateProperty.all<Color>(
