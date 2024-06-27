@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:atas_mobile/sign_up.dart';
 import 'package:flutter/gestures.dart';
 
 class LoginApp extends StatelessWidget {
@@ -70,7 +72,7 @@ class LoginWidget extends StatelessWidget {
                   style: const TextStyle(color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      // navigate to sign up page
+                      SignUp();
                     },
                 ),
               ],
